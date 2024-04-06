@@ -1,5 +1,7 @@
 class ApplicationController < Sinatra::Base
+  set :root, './'
+
   get '/' do
-    'Home page'
+    slim :home
   end
 end
