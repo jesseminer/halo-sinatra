@@ -1,1 +1,9 @@
-h1 Home page
+h1.fs-2.mt-5.text-center.fw-semibold Recently Joined Players
+.row.justify-content-center.mt-4
+  .col-sm-6.col-md-3
+    - @recent_players.each do |player|
+      .d-flex.align-items-center.mb-3
+        img.me-2 src=player.emblem_url width="80"
+        div
+          a.fs-5.fw-semibold href="/players/#{player.slug}" = player.gamertag
+          .small.text-secondary Spartan Rank #{player.spartan_rank}
