@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/activerecord'
+require './models/api_client'
 require './models/player'
 require './controllers/application_controller'
 require './controllers/players_controller'

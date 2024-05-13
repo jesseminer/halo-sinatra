@@ -1,1 +1,11 @@
-p Player #{params[:id]}
+p = @player.gamertag
+img src=@player.spartan_image_url
+- if @player.refreshed_at.present?
+  p Spartan Rank #{@player.spartan_rank}
+
+- if @player.refreshed_at.nil?
+  p Loading
+  javascript:
+    fetch('/players/#{@player.id}/fetch', { method: 'PUT' })
+      .then(resp => resp.json())
+      .then(() => window.location.reload())

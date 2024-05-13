@@ -1,5 +1,10 @@
 header
   a.fw-bold href="/" Halo Stats
-  form.d-flex
-    input.form-control.me-2 type="text" placeholder="Search"
-    button.btn.btn-primary type="button" Search
+  form.d-flex.search-form action="/players" method="post"
+    input.form-control.me-2 name="gamertag" type="text" placeholder="Find a player" required="true"
+    button.btn.btn-primary type="submit" Search
+
+javascript:
+  document.querySelector('.search-form').addEventListener('submit', function () {
+    this.querySelector('button').disabled = true
+  })
