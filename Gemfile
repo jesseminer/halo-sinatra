@@ -6,3 +6,8 @@ gem 'puma'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'slim'
+
+group :development do
+  gem 'dotenv'
+  gem 'rerun'
+end

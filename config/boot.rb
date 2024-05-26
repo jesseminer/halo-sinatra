@@ -1,3 +1,4 @@
+require 'dotenv/load'
 require 'sinatra/base'
 require 'sinatra/activerecord'
 require './models/api_client'
