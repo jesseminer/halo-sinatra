@@ -1,11 +1,33 @@
-p = @player.gamertag
-img src=@player.spartan_image_url
-- if @player.refreshed_at.present?
-  p Spartan Rank #{@player.spartan_rank}
+.player-profile
+  player-profile :player="player"
 
-- if @player.refreshed_at.nil?
-  p Loading
-  javascript:
-    fetch('/players/#{@player.id}/fetch', { method: 'PUT' })
-      .then(resp => resp.json())
-      .then(() => window.location.reload())
+script#player-profile-template type="text/x-template"
+  .d-flex.align-items-center.my-3
+    img.me-3 :src="player.emblem_url" width="90"
+    h1
+      | {{player.gamertag}}
+  .row v-if="player.refreshed_at"
+    .col-md
+      .panel
+        img :src="player.spartan_image_url"
+        p.fs-4.mt-3 Spartan Rank {{player.spartan_rank}}
+    .col-md
+      .panel
+        h2 Arena
+    .col-md
+      .panel
+        h2 Warzone
+  .panel.text-center.py-5 v-else=""
+    .loader
+
+script src="/player_profile.js"
+javascript:
+  document.addEventListener('DOMContentLoaded', () => {
+    Vue.createApp({
+      components: { PlayerProfile },
+
+      data () {
+        return { player: #{{@player.to_json}} }
+      }
+    }).mount('.player-profile')
+  })

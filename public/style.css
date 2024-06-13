@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f0f0f0;
+  padding-bottom: 5rem;
+}
+
 a {
   text-decoration: none;
 }
@@ -17,5 +22,31 @@ header {
 
   a {
     color: white;
+  }
+}
+
+.panel {
+  background-color: #ffffff;
+  border-radius: 0.7rem;
+  box-shadow: 4px 4px 4px 0px #cccccc;
+  padding: 1rem;
+}
+
+.loader {
+  animation: rotation 1.2s linear infinite;
+  border: 9px solid #6666ee;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  height: 8rem;
+  width: 8rem;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -14,9 +14,9 @@ class PlayersController < ApplicationController
     client = ApiClient.new(player.gamertag)
     arena = client.arena_stats
     player.update(
-      emblem_url: client.emblem,
       gamertag: arena['PlayerId']['Gamertag'],
       refreshed_at: Time.current,
+      spartan_image_url: client.spartan_image,
       spartan_rank: arena['SpartanRank']
     )
     content_type :json

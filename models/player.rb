@@ -15,8 +15,8 @@ class Player < ActiveRecord::Base
     fail(RuntimeError, 'Gamertag is blank') if gamertag.blank?
 
     find_by(slug: gamertag.parameterize) || create(
+      emblem_url: ApiClient.new(gamertag.strip).emblem,
       gamertag: gamertag,
-      spartan_image_url: ApiClient.new(gamertag.strip).spartan_image,
       spartan_rank: 1
     )
   end
