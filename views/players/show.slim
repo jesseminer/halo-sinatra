@@ -6,17 +6,18 @@ script#player-profile-template type="text/x-template"
     img.me-3 :src="player.emblem_url" width="90"
     h1
       | {{player.gamertag}}
-  .row v-if="player.refreshed_at"
-    .col-md
-      .panel
-        img :src="player.spartan_image_url"
-        p.fs-4.mt-3 Spartan Rank {{player.spartan_rank}}
-    .col-md
-      .panel
-        h2 Arena
-    .col-md
-      .panel
-        h2 Warzone
+  template v-if="player.refreshed_at"
+    .row
+      .col-md
+        .panel
+          img :src="player.spartan_image_url"
+          p.fs-4.mt-3 Spartan Rank {{player.spartan_rank}}
+      .col-md
+        .panel
+          h2 Arena
+      .col-md
+        .panel
+          h2 Warzone
   .panel.text-center.py-5 v-else=""
     .loader
 
