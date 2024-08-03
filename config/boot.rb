@@ -11,3 +11,4 @@ require './models/season'
 
 require './controllers/application_controller'
 require './controllers/players_controller'
+require './controllers/playlist_ranks_controller'

@@ -1,6 +1,7 @@
 PlayerProfile = {
   template: '#player-profile-template',
-  props: { player: Object },
+  components: { PlaylistRanks },
+  props: { player: Object, seasons: Array },
 
   created () {
     if (!this.player.refreshed_at) { this.updatePlayer() }

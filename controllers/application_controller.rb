@@ -9,4 +9,11 @@ class ApplicationController < Sinatra::Base
     @recent_players = Player.order(created_at: :desc).limit(7)
     slim :home
   end
+
+  private
+
+  def json(data)
+    content_type :json
+    data.to_json
+  end
 end

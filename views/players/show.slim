@@ -1,5 +1,5 @@
 .player-profile
-  player-profile :player="player"
+  player-profile :player="player" :seasons="seasons"
 
 script#player-profile-template type="text/x-template"
   .d-flex.align-items-center.my-3
@@ -18,9 +18,16 @@ script#player-profile-template type="text/x-template"
       .col-md
         .panel
           h2 Warzone
+    .row.mt-5
+      .col-md
+        playlist-ranks :player-id="player.id" :seasons="seasons"
+      .col-md
   .panel.text-center.py-5 v-else=""
     .loader
 
+== slim :'players/playlist_ranks'
+
+script src="/playlist_ranks.js"
 script src="/player_profile.js"
 javascript:
   document.addEventListener('DOMContentLoaded', () => {
@@ -28,7 +35,10 @@ javascript:
       components: { PlayerProfile },
 
       data () {
-        return { player: #{{@player.to_json}} }
+        return {
+          player: #{{@player.to_json}},
+          seasons: #{{@seasons.to_json(only: %i[id name])}}
+        }
       }
     }).mount('.player-profile')
   })

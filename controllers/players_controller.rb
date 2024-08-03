@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   get '/players/:id' do
     @player = Player.find(params[:id])
+    @seasons = Season.order(start_time: :desc)
     slim :'players/show'
   end
 
@@ -19,7 +20,6 @@ class PlayersController < ApplicationController
       spartan_image_url: client.spartan_image,
       spartan_rank: arena['SpartanRank']
     )
-    content_type :json
-    player.to_json
+    json(player)
   end
 end
