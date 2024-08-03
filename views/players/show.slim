@@ -13,11 +13,9 @@ script#player-profile-template type="text/x-template"
           img :src="player.spartan_image_url"
           p.fs-4.mt-3 Spartan Rank {{player.spartan_rank}}
       .col-md
-        .panel
-          h2 Arena
+        .panel == slim :'players/service_record', locals: { svc_record: @player.service_records.arena.first }
       .col-md
-        .panel
-          h2 Warzone
+        .panel == slim :'players/service_record', locals: { svc_record: @player.service_records.warzone.first }
     .row.mt-5
       .col-md
         playlist-ranks :player-id="player.id" :seasons="seasons"
