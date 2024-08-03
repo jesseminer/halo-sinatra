@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   has_many :playlist_ranks
+  has_many :service_records
 
   validates :gamertag, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true
