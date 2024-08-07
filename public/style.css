@@ -50,3 +50,14 @@ header {
     transform: rotate(360deg);
   }
 }
+
+.service-record-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.service-record-label {
+  color: var(--bs-secondary-color);
+  text-transform: uppercase;
+}

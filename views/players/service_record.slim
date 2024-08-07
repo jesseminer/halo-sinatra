@@ -1,7 +1,10 @@
-h2 = svc_record.game_mode.titlecase
-.fs-3.mt-3 #{svc_record.win_percentage.round(1)}%
-.text-muted Win Percentage
-.fs-3.mt-3 = svc_record.kd_ratio.round(2)
-.text-muted K/D Ratio
-.fs-3.mt-3 = svc_record.games_played
-.text-muted Games Played
+.panel.h-100
+  .d-flex.align-items-center.justify-content-between.pb-3.border-bottom
+    h2.fs-3.m-0 = svc_record.game_mode.titlecase
+    img src="/images/#{svc_record.game_mode}_icon.png" height="50"
+  .service-record-value #{svc_record.win_percentage.round(1)}%
+  .service-record-label Win Percentage
+  .service-record-value = svc_record.kd_ratio.round(2)
+  .service-record-label K/D Ratio
+  .service-record-value = number_to_delimited(svc_record.games_played)
+  .service-record-label Games Played

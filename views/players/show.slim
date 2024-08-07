@@ -9,13 +9,13 @@ script#player-profile-template type="text/x-template"
   template v-if="player.refreshed_at"
     .row
       .col-md
-        .panel
-          img :src="player.spartan_image_url"
+        .panel.text-center
+          img :src="player.spartan_image_url" style="margin-top: -15px;"
           p.fs-4.mt-3 Spartan Rank {{player.spartan_rank}}
       .col-md
-        .panel == slim :'players/service_record', locals: { svc_record: @player.service_records.arena.first }
+        == slim :'players/service_record', locals: { svc_record: @player.service_records.arena.first }
       .col-md
-        .panel == slim :'players/service_record', locals: { svc_record: @player.service_records.warzone.first }
+        == slim :'players/service_record', locals: { svc_record: @player.service_records.warzone.first }
     .row.mt-5
       .col-md
         playlist-ranks :player-id="player.id" :seasons="seasons"
