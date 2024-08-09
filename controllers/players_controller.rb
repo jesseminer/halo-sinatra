@@ -12,14 +12,7 @@ class PlayersController < ApplicationController
 
   put '/players/:id/fetch' do
     player = Player.find(params[:id])
-    client = ApiClient.new(player.gamertag)
-    arena = client.arena_stats
-    player.update(
-      gamertag: arena['PlayerId']['Gamertag'],
-      refreshed_at: Time.current,
-      spartan_image_url: client.spartan_image,
-      spartan_rank: arena['SpartanRank']
-    )
-    json(player)
+    FetchPlayer.new(player).update
+    json(player.profile_data)
   end
 end
