@@ -1,5 +1,5 @@
 .player-profile
-  player-profile :player="player" :seasons="seasons"
+  player-profile :player-profile="player" :seasons="seasons"
 
 script#player-profile-template type="text/x-template"
   .d-flex.align-items-center.my-3
@@ -13,9 +13,9 @@ script#player-profile-template type="text/x-template"
           img :src="player.spartan_image_url" style="margin-top: -15px;"
           p.fs-4.mt-3 Spartan Rank {{player.spartan_rank}}
       .col-md
-        == slim :'players/service_record', locals: { svc_record: @player.service_records.arena.first }
+        service-record :service-record="player.arena_record"
       .col-md
-        == slim :'players/service_record', locals: { svc_record: @player.service_records.warzone.first }
+        service-record :service-record="player.warzone_record"
     .row.mt-5
       .col-md
         playlist-ranks :player-id="player.id" :seasons="seasons"
@@ -24,8 +24,10 @@ script#player-profile-template type="text/x-template"
     .loader
 
 == slim :'players/playlist_ranks'
+== slim :'players/service_record'
 
 script src="/playlist_ranks.js"
+script src="/service_record.js"
 script src="/player_profile.js"
 javascript:
   document.addEventListener('DOMContentLoaded', () => {
@@ -34,7 +36,7 @@ javascript:
 
       data () {
         return {
-          player: #{{@player.to_json}},
+          player: #{{@player.profile_data.to_json}},
           seasons: #{{@seasons.to_json(only: %i[id name])}}
         }
       }

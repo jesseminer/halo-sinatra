@@ -24,6 +24,13 @@ class Player < ActiveRecord::Base
     )
   end
 
+  def profile_data
+    as_json(only: %i[id emblem_url gamertag refreshed_at spartan_image_url spartan_rank]).merge(
+      arena_record: service_records.arena.first&.profile_data,
+      warzone_record: service_records.warzone.first&.profile_data
+    )
+  end
+
   def update_season_ranks(season, json = nil)
     json ||= ApiClient.new(gamertag).arena_stats(season.uid)['ArenaStats']['ArenaPlaylistStats']
 

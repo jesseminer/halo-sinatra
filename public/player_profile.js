@@ -1,7 +1,11 @@
 PlayerProfile = {
   template: '#player-profile-template',
-  components: { PlaylistRanks },
-  props: { player: Object, seasons: Array },
+  components: { PlaylistRanks, ServiceRecord },
+  props: { playerProfile: Object, seasons: Array },
+
+  data () {
+    return { player: this.playerProfile }
+  },
 
   created () {
     if (!this.player.refreshed_at) { this.updatePlayer() }

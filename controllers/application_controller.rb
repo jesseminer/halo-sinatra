@@ -1,6 +1,4 @@
 class ApplicationController < Sinatra::Base
-  include ActiveSupport::NumberHelper
-
   set(
     logging: true,
     root: './',
