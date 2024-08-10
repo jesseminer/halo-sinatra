@@ -3,7 +3,7 @@ class PlaylistRanksController < ApplicationController
     player = Player.find(params[:player_id])
     season_id = params.fetch(:season_id)
 
-    unless player.completed_seasons.include?(season_id)
+    if params[:refresh] == 'true' && !player.completed_seasons.include?(season_id)
       player.update_season_ranks(Season.find(season_id))
     end
 

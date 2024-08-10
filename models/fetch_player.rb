@@ -6,6 +6,7 @@ class FetchPlayer
   def update
     update_service_record(:arena)
     update_service_record(:warzone)
+    update_current_season_ranks
     update_profile_info
   end
 
@@ -28,6 +29,10 @@ class FetchPlayer
       games_won: json['TotalGamesWon'],
       time_played: ApiClient.parse_duration(json['TotalTimePlayed'])
     }
+  end
+
+  def update_current_season_ranks
+    @player.update_season_ranks(Season.current, arena_json)
   end
 
   def update_profile_info

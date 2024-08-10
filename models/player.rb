@@ -34,9 +34,9 @@ class Player < ActiveRecord::Base
   end
 
   def update_season_ranks(season, json = nil)
-    json ||= ApiClient.new(gamertag).arena_stats(season.uid)['ArenaStats']['ArenaPlaylistStats']
+    json ||= ApiClient.new(gamertag).arena_stats(season.uid)
 
-    json.each do |attrs|
+    json['ArenaStats']['ArenaPlaylistStats'].each do |attrs|
       csr_attrs = attrs['Csr']
       next if csr_attrs.blank?
 

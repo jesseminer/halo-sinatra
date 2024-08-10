@@ -11,12 +11,12 @@ PlaylistRanks = {
   },
 
   watch: {
-    selectedSeasonId () { this.loadRanks() }
+    selectedSeasonId () { this.loadRanks(true) }
   },
 
   methods: {
-    loadRanks () {
-      fetch(`/playlist_ranks?player_id=${this.playerId}&season_id=${this.selectedSeasonId}`)
+    loadRanks (refresh = false) {
+      fetch(`/playlist_ranks?player_id=${this.playerId}&season_id=${this.selectedSeasonId}&refresh=${refresh}`)
         .then(resp => resp.json())
         .then(ranks => this.ranks = ranks)
     }
