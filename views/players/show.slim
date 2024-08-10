@@ -6,7 +6,8 @@ script#player-profile-template type="text/x-template"
     img.me-3 :src="player.emblem_url" width="90"
     h1
       | {{player.gamertag}}
-  template v-if="player.refreshed_at"
+    button.btn.btn-secondary.ms-auto type="button" @click="updatePlayer" :disabled="loading" Refresh Stats
+  template v-if="!loading"
     .row.gy-3
       .col-md
         .panel.text-center

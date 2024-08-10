@@ -4,7 +4,7 @@ PlayerProfile = {
   props: { playerProfile: Object, seasons: Array },
 
   data () {
-    return { player: this.playerProfile }
+    return { loading: false, player: this.playerProfile }
   },
 
   created () {
@@ -13,9 +13,13 @@ PlayerProfile = {
 
   methods: {
     updatePlayer () {
+      this.loading = true
       fetch(`/players/${this.player.id}/fetch`, { method: 'PUT' })
         .then(resp => resp.json())
-        .then(player => this.player = player)
+        .then(player => {
+          this.player = player
+          this.loading = false
+        })
     }
   }
 }
