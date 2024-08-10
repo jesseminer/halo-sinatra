@@ -2,11 +2,12 @@
 
 header
   a.fw-bold href="/" Halo Stats
-  form.d-flex.align-items-center.search-form action="/players" method="post"
+  .d-flex.flex-wrap.align-items-center.ms-auto
     - if error_msg.present?
       .error-msg.text-white.text-nowrap.me-3 = error_msg
-    input.form-control.me-2 name="gamertag" type="text" placeholder="Find a player" required="true"
-    button.btn.btn-primary type="submit" Search
+    form.d-flex.search-form action="/players" method="post"
+      input.form-control.me-2 name="gamertag" type="text" placeholder="Find a player" required="true"
+      button.btn.btn-primary type="submit" Search
 
 javascript:
   document.querySelector('.search-form').addEventListener('submit', function () {

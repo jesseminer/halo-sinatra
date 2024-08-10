@@ -7,7 +7,7 @@ script#player-profile-template type="text/x-template"
     h1
       | {{player.gamertag}}
   template v-if="player.refreshed_at"
-    .row
+    .row.gy-3
       .col-md
         .panel.text-center
           img :src="player.spartan_image_url" style="margin-top: -15px;"
