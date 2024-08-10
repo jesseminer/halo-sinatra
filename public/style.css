@@ -16,12 +16,12 @@ header {
   background-color: #333;
   display: flex;
   flex-wrap: wrap;
-  font-size: 2.2rem;
   justify-content: space-between;
   padding: 1rem 2rem;
 
   a {
     color: white;
+    font-size: 2.2rem;
   }
 }
 
@@ -60,4 +60,8 @@ header {
 .service-record-label {
   color: var(--bs-secondary-color);
   text-transform: uppercase;
+}
+
+.error-msg {
+  transition: 0.4s ease opacity;
 }

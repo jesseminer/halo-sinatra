@@ -1,4 +1,6 @@
 class Player < ActiveRecord::Base
+  class PlayerNotFound < StandardError; end
+
   has_many :playlist_ranks, dependent: :destroy
   has_many :service_records, dependent: :destroy
 
@@ -15,13 +17,13 @@ class Player < ActiveRecord::Base
   end
 
   def self.find_or_create(gamertag)
-    fail(RuntimeError, 'Gamertag is blank') if gamertag.blank?
+    raise(PlayerNotFound, 'Gamertag is blank') if gamertag.blank?
+    player = find_by(slug: gamertag.parameterize)
+    return player if player.present?
 
-    find_by(slug: gamertag.parameterize) || create(
-      emblem_url: ApiClient.new(gamertag.strip).emblem,
-      gamertag: gamertag,
-      spartan_rank: 1
-    )
+    emblem_url = ApiClient.new(gamertag.strip).emblem
+    raise(PlayerNotFound, "Player not found: #{gamertag}") if emblem_url.blank?
+    create(emblem_url:, gamertag:, spartan_rank: 1)
   end
 
   def profile_data

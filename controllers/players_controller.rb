@@ -1,4 +1,8 @@
 class PlayersController < ApplicationController
+  get '/players' do
+    render_home
+  end
+
   get '/players/:id' do
     @player = Player.find(params[:id])
     @seasons = Season.order(start_time: :desc)
@@ -8,6 +12,8 @@ class PlayersController < ApplicationController
   post '/players' do
     player = Player.find_or_create(params[:gamertag])
     redirect to("/players/#{player.slug}")
+  rescue Player::PlayerNotFound => e
+    render_home(error_msg: e.message)
   end
 
   put '/players/:id/fetch' do
