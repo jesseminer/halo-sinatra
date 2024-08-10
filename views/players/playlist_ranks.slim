@@ -3,10 +3,12 @@ script#playlist-ranks-template type="text/x-template"
     h2 Playlist Ranks
     select.form-select.mt-3.mb-2 v-model="selectedSeasonId"
       option v-for="s in seasons" :value="s.id" {{s.name}}
-    .d-flex.align-items-center.py-3.border-bottom v-for="r in ranks"
-      img :src="r.image_url" height="75"
-      .ms-2
-        .fw-bold
-          | {{r.playlist}}
-        .text-muted
-          | {{r.label}}
+    template v-if="ranks.length > 0"
+      .d-flex.align-items-center.py-3.border-bottom v-for="r in ranks"
+        img :src="r.image_url" height="75"
+        .ms-2
+          .fw-bold
+            | {{r.playlist}}
+          .text-muted
+            | {{r.label}}
+    .alert.alert-dark.mt-4 v-else="" No ranks found for this season.
