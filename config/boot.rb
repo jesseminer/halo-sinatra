@@ -10,6 +10,8 @@ require './models/playlist'
 require './models/playlist_rank'
 require './models/season'
 require './models/service_record'
+require './models/weapon_usage'
+require './models/weapon'
 
 require './controllers/application_controller'
 require './controllers/players_controller'
