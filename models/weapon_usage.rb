@@ -5,8 +5,4 @@ class WeaponUsage < ActiveRecord::Base
   belongs_to :weapon
 
   validates :player_id, uniqueness: { scope: [:weapon_id, :game_mode] }
-
-  def kpm
-    time_used == 0 ? 0 : (60 * kills.to_f / time_used).round(2)
-  end
 end
