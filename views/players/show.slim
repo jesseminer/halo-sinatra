@@ -21,14 +21,17 @@ script#player-profile-template type="text/x-template"
       .col-md
         playlist-ranks :player-id="player.id" :seasons="seasons"
       .col-md
+        weapon-stats :player-id="player.id"
   .panel.text-center.py-5 v-else=""
     .loader
 
 == slim :'players/playlist_ranks'
 == slim :'players/service_record'
+== slim :'players/weapon_stats'
 
 script src="/playlist_ranks.js"
 script src="/service_record.js"
+script src="/weapon_stats.js"
 script src="/player_profile.js"
 javascript:
   document.addEventListener('DOMContentLoaded', () => {

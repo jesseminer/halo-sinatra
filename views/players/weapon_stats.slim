@@ -1,0 +1,13 @@
+script#weapon-stats-template type="text/x-template"
+  .panel
+    h2 Weapons
+    select.form-select.mt-3.mb-2 v-model="gameMode"
+      option value="arena" Arena
+      option value="warzone" Warzone
+    .d-flex.align-items-center.py-2.border-bottom v-for="w in filteredWeapons" :key="w.id"
+      img :src="w.image_url" height="75"
+      .ms-2
+        .fw-bold
+          | {{w.name}}
+        .text-muted
+          | {{w.kpm}} kills per minute • {{w.kills}} total

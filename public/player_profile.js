@@ -1,6 +1,6 @@
 PlayerProfile = {
   template: '#player-profile-template',
-  components: { PlaylistRanks, ServiceRecord },
+  components: { PlaylistRanks, ServiceRecord, WeaponStats },
   props: { playerProfile: Object, seasons: Array },
 
   data () {
