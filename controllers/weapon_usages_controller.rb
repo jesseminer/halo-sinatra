@@ -2,6 +2,7 @@ class WeaponUsagesController < ApplicationController
   SELECT_SQL = <<-SQL
     weapons.image_url,
     weapons.name,
+    weapons.weapon_type,
     weapon_usages.game_mode,
     weapon_usages.id,
     weapon_usages.kills,

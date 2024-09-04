@@ -1,9 +1,13 @@
 script#weapon-stats-template type="text/x-template"
   .panel
     h2 Weapons
-    select.form-select.mt-3.mb-2 v-model="gameMode"
-      option value="arena" Arena
-      option value="warzone" Warzone
+    .d-flex.align-items-center.flex-wrap.mt-3.mb-2
+      select.form-select.w-auto.me-4 v-model="gameMode"
+        option value="arena" Arena
+        option value="warzone" Warzone
+      .form-check
+        input.form-check-input#show-power-weapons type="checkbox" v-model="showPower"
+        label.form-check-label for="show-power-weapons" Show power weapons and vehicles
     .d-flex.align-items-center.py-2.border-bottom v-for="w in filteredWeapons" :key="w.id"
       img :src="w.image_url" height="75"
       .ms-2

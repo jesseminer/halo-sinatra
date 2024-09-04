@@ -3,12 +3,14 @@ WeaponStats = {
   props: { playerId: Number },
 
   data () {
-    return { gameMode: 'arena', weapons: [] }
+    return { gameMode: 'arena', showPower: false, weapons: [] }
   },
 
   computed: {
     filteredWeapons () {
-      return this.weapons.filter(w => w.game_mode === this.gameMode)
+      return this.weapons.filter(w => {
+        return w.game_mode === this.gameMode && (this.showPower || w.weapon_type === 'Standard')
+      })
     }
   },
 

@@ -17,10 +17,10 @@ script#player-profile-template type="text/x-template"
         service-record :service-record="player.arena_record"
       .col-md
         service-record :service-record="player.warzone_record"
-    .row.mt-5
-      .col-md
+    .row.gy-3.mt-4
+      .col-lg
         playlist-ranks :player-id="player.id" :seasons="seasons"
-      .col-md
+      .col-lg
         weapon-stats :player-id="player.id"
   .panel.text-center.py-5 v-else=""
     .loader
