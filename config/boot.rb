@@ -1,5 +1,5 @@
-require 'dotenv/load' if Sinatra::Application.development?
 require 'sinatra/base'
+require 'dotenv/load' if Sinatra::Application.development?
 require 'sinatra/activerecord'
 
 require './models/api_client'
