@@ -1,4 +1,4 @@
-require 'dotenv/load'
+require 'dotenv/load' if Sinatra::Application.development?
 require 'sinatra/base'
 require 'sinatra/activerecord'
 
