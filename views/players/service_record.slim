@@ -3,7 +3,7 @@ script#service-record-template type="text/x-template"
     .d-flex.align-items-center.justify-content-between.pb-3.border-bottom
       h2.fs-3.m-0
         | {{serviceRecord.game_mode}}
-      img :src="`/images/${serviceRecord.game_mode}_icon.png`" height="50"
+      img :src="`/images/${serviceRecord.game_mode.toLowerCase()}_icon.png`" height="50"
     .service-record-value
       | {{serviceRecord.win_percentage}}%
     .service-record-label Win Percentage
